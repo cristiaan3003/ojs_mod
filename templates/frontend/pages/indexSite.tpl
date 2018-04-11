@@ -30,6 +30,8 @@
 					{capture assign="url"}{url journal=$journal->getPath()}{/capture}
 					{assign var="thumb" value=$journal->getLocalizedSetting('journalThumbnail')}
 					{assign var="description" value=$journal->getLocalizedDescription()}
+					{assign var="facultad" value=$journal->getLocalizedFacultad()}
+					{assign var="tematica" value=$journal->getLocalizedTematica()}
 					<li{if $thumb} class="has_thumb"{/if}>
 						{if $thumb}
 							{assign var="altText" value=$journal->getLocalizedSetting('journalThumbnailAltText')}
@@ -49,6 +51,16 @@
 							{if $description}
 								<div class="description">
 									{$description|nl2br}
+								</div>
+							{/if}
+							{if $facultad}
+								<div class="facultad">
+									Facultad: {$facultad|nl2br}
+								</div>
+							{/if}
+							{if $tematica}
+								<div class="tematica">
+									Temática: {$tematica|nl2br}
 								</div>
 							{/if}
 							<ul class="links">
