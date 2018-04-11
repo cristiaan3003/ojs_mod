@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/openSNRD/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2014-2017 Simon Fraser University
+  * Copyright (c) 2003-2017 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  * Localization information: https://pkp.sfu.ca/wiki/index.php?title=Translating_OxS
+  * Localization strings.
+  -->
+ 
+<locale name="en_US" full_name="U.S. English">
+	<message key="plugins.generic.openSNRD.displayName">OpenSNRD</message>
+	<message key="plugins.generic.openSNRD.description">The OpenSNRD module filters the items that should not be included in the SNRD set.</message>
+	<message key="plugins.generic.openSNRD.snrdID">OpenSNRD ID</message>
+	<message key="plugins.generic.openSNRD.snrdID.description"></message>
+	<message key="plugins.generic.openSNRD.snrdIDValid">Enter a valid project ID for SNRD (ID: 100000)</message>
+</locale>

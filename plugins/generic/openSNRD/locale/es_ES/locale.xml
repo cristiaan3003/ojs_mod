@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * plugins/generic/openSNRD/locale/en_US/locale.xml
+  *
+  * Copyright (c) 2014-2017 Simon Fraser University
+  * Copyright (c) 2003-2017 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  * Localization information: https://pkp.sfu.ca/wiki/index.php?title=Translating_OxS
+  * Localization strings.
+  -->
+ 
+<locale name="es_ES" full_name="Español">
+	<message key="plugins.generic.openSNRD.displayName">OpenSNRD</message>
+	<message key="plugins.generic.openSNRD.description">El módulo OpenSNRD filtra los articulos que no deben incluirse en el set SNRD.</message>
+	<message key="plugins.generic.openSNRD.snrdID">Identificación del artículo</message>
+	<message key="plugins.generic.openSNRD.snrdID.description">(Esto aplica para todos aquellos documentos que no son artículos de investigación de carácter científico. Ejemplo: cartas a los autores, entrevistas, notas varias ("sobre los autores"), currículos, etc. )</message>
+	<message key="plugins.generic.openSNRD.snrdIDValid">Introduzca una identificación de proyecto para SNRD válida (ID:100000)</message>
+</locale>
