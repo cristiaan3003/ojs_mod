@@ -166,6 +166,25 @@ abstract class ContextDAO extends DAO {
 
 		return new DAOResultFactory($result, $this, '_fromRow');
 	}
+	
+	
+	/**
+	 * Retrieve all journal alphabetical.
+	 * @param $enabledOnly true iff only enabled contexts should be included
+	 * @param $rangeInfo Object optional
+	 * @return DAOResultFactory containing matching Contexts
+	 */
+	function getAllAlphabetical($enabledOnly = false, $rangeInfo = null) {
+		$result = $this->retrieveRange(
+			'SELECT journals.journal_id,journals.path,journals.seq,journals.primary_locale,journals.enabled  FROM journals,journal_settings WHERE journals.journal_id=journal_settings.journal_id AND journals.enabled = \'1\' AND journal_settings.setting_name=\'name\' GROUP BY journals.journal_id,journal_settings.setting_value ORDER BY journal_settings.setting_value;',
+			false,
+			$rangeInfo
+		);
+
+		return new DAOResultFactory($result, $this, '_fromRow');
+	}
+	
+	
 
 	/**
 	 * Retrieve available contexts.

@@ -85,7 +85,7 @@ class IndexHandler extends Handler {
 			$templateMgr->assign('about', $site->getLocalizedAbout());
 			$templateMgr->assign('journalFilesPath', $request->getBaseUrl() . '/' . Config::getVar('files', 'public_files_dir') . '/journals/');
 
-			$journals = $journalDao->getAll(true);
+			$journals = $journalDao->getAllAlphabetical(true);
 			$templateMgr->assign('journals', $journals);
 			$templateMgr->assign('site', $site);
 
