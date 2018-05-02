@@ -141,6 +141,27 @@
 				</span>
 			</div>
 			{/if}
+			
+			
+			
+			<ul class="article-views list-group">
+                    <li class="item-views list-group-item">
+                        <span>{translate key="article.estaditicas.abstract"}</span> - <b>{$article->getViews()}</b>
+                        {translate key="article.estaditicas.times"}
+                    </li>
+                    {if is_a($article, 'PublishedArticle')}{assign var=galleys value=$article->getGalleys()}{/if}
+                    {if $galleys}
+                        {foreach from=$galleys item=galley name=galleyList}
+                            <li class="item-views list-group-item">
+                                <span>{translate key="article.estaditicas.galeradas"}  {$galley->getGalleyLabel()} {translate key="article.estaditicas.downloaded"}</span> - <b>{$galley->getViews()}</b>
+                                {translate key="article.estaditicas.times"}
+                            </li>
+                        {/foreach}
+                    {/if}
+                </ul>
+			
+			
+			
 
 			{* Abstract *}
 			{if $article->getLocalizedAbstract()}
@@ -251,6 +272,18 @@
 			{/if}
 
 			{if $article->getDatePublished()}
+			
+			<div class="item published">
+					<div class="label">
+						{translate key="submissions.submitted"}
+					</div>
+					<div class="value">
+						{$article->getDateSubmitted()|date_format:$dateFormatShort}
+					</div>
+				</div>
+				
+			
+			
 				<div class="item published">
 					<div class="label">
 						{translate key="submissions.published"}

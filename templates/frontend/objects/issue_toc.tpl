@@ -28,6 +28,7 @@
 
 		{* Issue cover image *}
 		{assign var=issueCover value=$issue->getLocalizedCoverImageUrl()}
+		{assign var=issueCoverContra value=$issue->getLocalizedCoverContraImageUrl()}
 		{if $issueCover}
 			<a class="cover" href="{url op="view" page="issue" path=$issue->getBestIssueId()}">
 				<img src="{$issueCover|escape}"{if $issue->getLocalizedCoverImageAltText() != ''} alt="{$issue->getLocalizedCoverImageAltText()|escape}"{/if}>
@@ -73,7 +74,41 @@
 					{$issue->getDatePublished()|date_format:$dateFormatShort}
 				</span>
 			</div>
+						
 		{/if}
+		
+		
+		{if $issueCover}
+		
+		<div class="published">
+				<span class="label">
+					{translate key="submissions.published.dascargar.tapa"}:
+				</span>
+				<span class="value">
+					<a href="{$issueCover|escape}" download="cover">{translate key="submissions.published.dascargar"}</a>
+				</span>
+			</div>		
+		
+		{/if}
+		
+		
+		{if $issueCoverContra}
+		
+		<div class="published">
+				<span class="label">
+					{translate key="submissions.published.dascargar.contra.tapa"}:
+				</span>
+				<span class="value">
+					<a href="{$issueCoverContra|escape}" download="backcover">{translate key="submissions.published.dascargar"}</a>
+				</span>
+			</div>		
+			
+		
+		{/if}
+		
+		
+		
+		
 	</div>
 
 	{* Full-issue galleys *}

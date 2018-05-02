@@ -15,7 +15,6 @@
  * @uses $primaryGenreIds array List of file genre IDs for primary types
  *}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$issueIdentification}
-
 <div class="page page_issue">
 
 	{* Display a message if no current issue exists *}

@@ -438,6 +438,110 @@ class Issue extends DataObject {
 	function setCoverImageAltText($coverImageAltText, $locale) {
 		return $this->setData('coverImageAltText', $coverImageAltText, $locale);
 	}
+	
+	
+	//--------------------------------------------------------------
+	//--------------------------------------------------------------
+	//--------------------------------------------------------------
+	
+	/**
+	 * Get the localized issue covercontra image file name
+	 * @return string
+	 */
+	function getLocalizedCoverContraImage() {
+		return $this->getLocalizedData('contraTapaName');
+	}
+
+	/**
+	 * Get issue covercontra image file name
+	 * @param $locale string
+	 * @return string
+	 */
+	function getCoverContraImage($locale) {
+		return $this->getData('contraTapaName', $locale);
+	}
+
+	/**
+	 * Set issue covercontra image file name
+	 * @param $contraTapaName string
+	 * @param $locale string
+	 */
+	function setCoverContraImage($contraTapaName, $locale) {
+		return $this->setData('contraTapaName', $contraTapaName, $locale);
+	}
+
+	/**
+	 * Get the localized issue covercontra image alternate text
+	 * @return string
+	 */
+	function getLocalizedCoverContraImageAltText() {
+		return $this->getLocalizedData('coverImageAltText');
+	}
+
+	/**
+	 * Get issue covercontra image alternate text
+	 * @param $locale string
+	 * @return string
+	 */
+	function getCoverContraImageAltText($locale) {
+		return $this->getData('coverImageAltText', $locale);
+	}
+
+	/**
+	 * Get a full URL to the localized covercontra image
+	 *
+	 * @return string
+	 */
+	function getLocalizedCoverContraImageUrl() {
+		$contraTapaName = $this->getLocalizedCoverContraImage();
+		if (!$contraTapaName) {
+			return '';
+		}
+
+		$request = Application::getRequest();
+
+		import('classes.file.PublicFileManager');
+		$publicFileManager = new PublicFileManager();
+
+		return $request->getBaseUrl() . '/' . $publicFileManager->getJournalFilesPath($this->getJournalId()) . '/' . $contraTapaName;
+	}
+
+	/**
+	 * Get the full URL to all localized covercontra images
+	 *
+	 * @return array
+	 */
+	function getCoverContraImageUrls() {
+		$coverImages = $this->getCoverContraImage(null);
+		if (empty($coverImages)) {
+			return array();
+		}
+
+		$request = Application::getRequest();
+		import('classes.file.PublicFileManager');
+		$publicFileManager = new PublicFileManager();
+
+		$urls = array();
+
+		foreach ($coverImages as $locale => $contraTapaName) {
+			$urls[$locale] = sprintf('%s/%s/%s', $request->getBaseUrl(), $publicFileManager->getJournalFilesPath($this->getJournalId()), $contraTapaName);
+		}
+
+		return $urls;
+	}
+
+	/**
+	 * Set issue covercontra image alternate text
+	 * @param $coverImageAltText string
+	 * @param $locale string
+	 */
+	function setCoverContraImageAltText($coverImageAltText, $locale) {
+		return $this->setData('coverImageAltText', $coverImageAltText, $locale);
+	}
+	
+	//--------------------------------------------------------------
+	//--------------------------------------------------------------
+	//--------------------------------------------------------------
 
 	/**
 	 * Return the string of the issue identification based label format

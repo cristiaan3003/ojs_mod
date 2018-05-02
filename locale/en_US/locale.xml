@@ -137,6 +137,15 @@
 	<message key="article.fontSize.medium.altText">Medium</message>
 	<message key="article.fontSize.large.altText">Large</message>
 	<message key="article.return">Return to Article Details</message>
+    
+    
+    
+    <message key="article.estaditicas.viewed">viewed</message>
+    <message key="article.estaditicas.times">times.</message>
+    <message key="article.estaditicas.downloaded">downloaded</message>
+    <message key="article.estaditicas.abstract">Revenue to this page</message>
+    <message key="article.estaditicas.galeradas">Galleys of </message>
+    
 
 	<!-- Submission Tracking - Common -->
 	<message key="submission.submissionEditing">Submission Editing</message>
@@ -174,6 +183,12 @@
 	<message key="submissions.editorDecision">Editor Decision</message>
 	<message key="submissions.editorRuling">Editor Ruling</message>
 	<message key="submission.eventLog">Event Log</message>
+    
+    
+    <message key="submissions.published.dascargar.tapa">Download cover image</message>
+    <message key="submissions.published.dascargar.contra.tapa">Download back cover image</message>
+    <message key="submissions.published.dascargar">download</message>
+    
 
 	<!-- Submission list search engine -->
 	<message key="submissions.copyeditComplete">Copyedited</message>
@@ -764,6 +779,8 @@ You may optionally provide the user with a reason for disabling their account.</
 	<!-- About The Journal -->
 	<message key="about.statistics">Statistics</message>
 	<message key="about.contact">Contact</message>
+    <message key="about.sitepublicaciones">License of Publications</message>
+    <message key="about.desarrollo">Powered by Open Journal Systems | Public Knowledge Project</message>
 	<message key="about.aboutContext">About the Journal</message>
 	<message key="about.history">Journal History</message>
 	<message key="about.editorialTeam">Editorial Team</message>

@@ -139,6 +139,12 @@
 	<message key="article.fontSize.small.altText">Pequeño</message>
 	<message key="article.fontSize.medium.altText">Normal</message>
 	<message key="article.fontSize.large.altText">Grande</message>
+    
+    <message key="article.estaditicas.viewed">visto</message>
+    <message key="article.estaditicas.times">veces.</message>
+    <message key="article.estaditicas.downloaded">descargadas</message>
+    <message key="article.estaditicas.abstract">Ingresos a esta página</message>
+    <message key="article.estaditicas.galeradas">Galeras de </message>
 
 	<!-- Submission Tracking - Common -->
 	<message key="submission.submissionEditing">Edición de envíos</message>
@@ -176,6 +182,11 @@
 	<message key="submissions.editorDecision">Decisión del editor/a</message>
 	<message key="submissions.editorRuling">Normativa de edición</message>
 	<message key="submission.eventLog">Registro de eventos</message>
+    
+    
+    <message key="submissions.published.dascargar.tapa">Descargar imagen de tapa</message>
+    <message key="submissions.published.dascargar.contra.tapa">Descargar imagen de contratapa</message>
+    <message key="submissions.published.dascargar">descargar</message>
 
 	<!-- Submission list search engine -->
 	<message key="submissions.copyeditComplete">Original corregido</message>
@@ -965,6 +976,8 @@ La configuración del soporte CLOCKSS para Open Journal Systems no hace falta qu
 	<message key="article.pluginMissing"><![CDATA[<p>El archivo PDF que ha seleccionado debería cargarse aquí si su navegador tiene instalado un módulo de lectura de PDF  (por ejemplo, una versión reciente de <a href="https://get.adobe.com/reader/">Adobe Acrobat Reader</a>).</p>]]></message>
 	<message key="archive.archivesPageNumber">Archivos - Página {$pageNumber}</message>
 	<message key="about.contact">Contacto</message>
+    <message key="about.sitepublicaciones">Licencia de las Publicaciones</message>
+    <message key="about.desarrollo">Desarrollo en base de Open Journal Systems | Public Knowledge Project</message>
 	<message key="about.aboutContext">Sobre la revista</message>
 	<message key="about.onlineSubmissions.register">Registrar</message>
 	<message key="help.goToEditPage">Editar {$sectionTitle}</message>

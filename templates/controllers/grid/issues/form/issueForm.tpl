@@ -102,6 +102,41 @@
 			{/if}
 		{/fbvFormSection}
 	{/fbvFormArea}
+	
+	
+	
+	
+	<!-- ContraTapa -->
+	
+	{fbvFormArea id="coverImage" title="editor.issues.coverPage"}
+		{fbvFormSection}
+			{include file="controllers/fileUploadContainer.tpl" id="coverImageUploader"}
+			<input type="hidden" name="temporaryFileId" id="temporaryFileId" value="" />
+		{/fbvFormSection}
+		{fbvFormSection id="coverImagePreview"}
+			{if $coverImage != ''}
+				<div class="pkp_form_file_view pkp_form_image_view">
+					<div class="img">
+						<img src="{$publicFilesDir}/{$coverImage|escape:"url"}{'?'|uniqid}" {if $coverImageAlt !== ''} alt="{$coverImageAlt|escape}"{/if}>
+					</div>
+
+					<div class="data">
+						<span class="title">
+							{translate key="common.altText"}
+						</span>
+						<span class="value">
+							{fbvElement type="text" id="coverImageAltText" label="common.altTextInstructions" value=$coverImageAltText}
+						</span>
+
+						<div id="{$deleteCoverImageLinkAction->getId()}" class="actions">
+							{include file="linkAction/linkAction.tpl" action=$deleteCoverImageLinkAction contextId="issueForm"}
+						</div>
+					</div>
+				</div>
+			{/if}
+		{/fbvFormSection}
+	{/fbvFormArea}
+
 
 	{foreach from=$pubIdPlugins item=pubIdPlugin}
 		{assign var=pubIdMetadataFile value=$pubIdPlugin->getPubIdMetadataFile()}
