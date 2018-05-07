@@ -89,6 +89,27 @@ class IssueForm extends Form {
 					null
 				)
 			);
+			
+			// CoverContra image delete link action
+			if ($coverContraImage = $this->issue->getCoverContraImage(AppLocale::getLocale())) $templateMgr->assign(
+				'deleteCoverContraImageLinkAction',
+				new LinkAction(
+					'deleteCoverContraImage',
+					new RemoteActionConfirmationModal(
+						$request->getSession(),
+						__('common.confirmDelete'), null,
+						$request->getRouter()->url(
+							$request, null, null, 'deleteCoverContraImage', null, array(
+								'coverContraImage' => $coverContraImage,
+								'issueId' => $this->issue->getId(),
+							)
+						),
+						'modal_delete'
+					),
+					__('common.delete'),
+					null
+				)
+			);
 		}
 
 		return parent::fetch($request);
@@ -107,6 +128,7 @@ class IssueForm extends Form {
 			$publicFileManager = new PublicFileManager();
 			if (!$publicFileManager->getImageExtension($temporaryFile->getFileType())) {
 				$this->addError('coverImage', __('editor.issues.invalidCoverImageFormat'));
+				$this->addError('coverContraImage', __('editor.issues.invalidCoverContraImageFormat'));
 			}
 		}
 
@@ -131,7 +153,9 @@ class IssueForm extends Form {
 				'showYear' => $this->issue->getShowYear(),
 				'showTitle' => $this->issue->getShowTitle(),
 				'coverImage' => $this->issue->getCoverImage($locale),
+				'contraTapaName' => $this->issue->getCoverContraImage($locale),
 				'coverImageAltText' => $this->issue->getCoverImageAltText($locale),
+				'coverContraImageAltText' => $this->issue->getCoverContraImageAltText($locale),
 			);
 			parent::initData();
 		} else {
@@ -160,6 +184,7 @@ class IssueForm extends Form {
 			'showTitle',
 			'temporaryFileId',
 			'coverImageAltText',
+			'coverContraImageAltText',
 			'datePublished',
 		));
 
@@ -235,8 +260,24 @@ class IssueForm extends Form {
 			$issue->setCoverImage($newFileName, $locale);
 			$issueDao->updateObject($issue);
 		}
+		// Copy an uploaded coverContra file for the issue, if there is one.
+		if ($temporaryFileId = $this->getData('temporaryFileId')) {
+			$user = $request->getUser();
+			$temporaryFileDao = DAORegistry::getDAO('TemporaryFileDAO');
+			$temporaryFile = $temporaryFileDao->getTemporaryFile($temporaryFileId, $user->getId());
+
+			import('classes.file.PublicFileManager');
+			$publicFileManager = new PublicFileManager();
+			$newFileName = 'contratapa_issue_' . $issue->getId() . '_' . $locale . $publicFileManager->getImageExtension($temporaryFile->getFileType());
+			$journal = $request->getJournal();
+			$publicFileManager->copyJournalFile($journal->getId(), $temporaryFile->getFilePath(), $newFileName);
+			$issue->setCoverContraImage($newFileName, $locale);
+			$issueDao->updateObject($issue);
+		}
+		
 
 		$issue->setCoverImageAltText($this->getData('coverImageAltText'), $locale);
+		$issue->setCoverContraImageAltText($this->getData('coverContraImageAltText'), $locale);
 
 		HookRegistry::call('issueform::execute', array($this, $issue));
 

@@ -17,6 +17,8 @@
 			{ldelim}
 				$uploader: $('#coverImageUploader'),
 				$preview: $('#coverImagePreview'),
+				$uploaderContra: $('#coverContraImageUploader'),
+				$previewContra: $('#coverContraImagePreview'),
 				uploaderOptions: {ldelim}
 					uploadUrl: {url|json_encode op="uploadFile" escape=false},
 					baseUrl: {$baseUrl|json_encode},
@@ -29,6 +31,7 @@
 			{rdelim}
 		);
 	{rdelim});
+
 </script>
 
 <form class="pkp_form" id="issueForm" method="post" action="{url op="updateIssue" issueId=$issueId}">
@@ -79,6 +82,7 @@
 			{include file="controllers/fileUploadContainer.tpl" id="coverImageUploader"}
 			<input type="hidden" name="temporaryFileId" id="temporaryFileId" value="" />
 		{/fbvFormSection}
+		
 		{fbvFormSection id="coverImagePreview"}
 			{if $coverImage != ''}
 				<div class="pkp_form_file_view pkp_form_image_view">
@@ -108,16 +112,16 @@
 	
 	<!-- ContraTapa -->
 	
-	{fbvFormArea id="coverImage" title="editor.issues.coverPage"}
+	{fbvFormArea id="coverContraImage" title="editor.issues.coverContraPage"}
 		{fbvFormSection}
-			{include file="controllers/fileUploadContainer.tpl" id="coverImageUploader"}
+			{include file="controllers/fileUploadContainer.tpl" id="coverContraImageUploader"}
 			<input type="hidden" name="temporaryFileId" id="temporaryFileId" value="" />
 		{/fbvFormSection}
-		{fbvFormSection id="coverImagePreview"}
-			{if $coverImage != ''}
+		{fbvFormSection id="coverContraImagePreview"}
+			{if $coverContraImage != ''}
 				<div class="pkp_form_file_view pkp_form_image_view">
 					<div class="img">
-						<img src="{$publicFilesDir}/{$coverImage|escape:"url"}{'?'|uniqid}" {if $coverImageAlt !== ''} alt="{$coverImageAlt|escape}"{/if}>
+						<img src="{$publicFilesDir}/{$coverContraImage|escape:"url"}{'?'|uniqid}" {if $coverContraImageAlt !== ''} alt="{$coverContraImageAlt|escape}"{/if}>
 					</div>
 
 					<div class="data">
@@ -125,17 +129,19 @@
 							{translate key="common.altText"}
 						</span>
 						<span class="value">
-							{fbvElement type="text" id="coverImageAltText" label="common.altTextInstructions" value=$coverImageAltText}
+							{fbvElement type="text" id="coverContraImageAltText" label="common.altTextInstructions" value=$coverContraImageAltText}
 						</span>
 
-						<div id="{$deleteCoverImageLinkAction->getId()}" class="actions">
-							{include file="linkAction/linkAction.tpl" action=$deleteCoverImageLinkAction contextId="issueForm"}
+						<div id="{$deleteCoverContraImageLinkAction->getId()}" class="actions">
+							{include file="linkAction/linkAction.tpl" action=$deleteContraCoverImageLinkAction contextId="issueForm"}
 						</div>
 					</div>
 				</div>
 			{/if}
 		{/fbvFormSection}
 	{/fbvFormArea}
+	
+	<!-- fin contratapa -->
 
 
 	{foreach from=$pubIdPlugins item=pubIdPlugin}

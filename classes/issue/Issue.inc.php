@@ -475,7 +475,7 @@ class Issue extends DataObject {
 	 * @return string
 	 */
 	function getLocalizedCoverContraImageAltText() {
-		return $this->getLocalizedData('coverImageAltText');
+		return $this->getLocalizedData('coverContraImageAltText');
 	}
 
 	/**
@@ -484,7 +484,7 @@ class Issue extends DataObject {
 	 * @return string
 	 */
 	function getCoverContraImageAltText($locale) {
-		return $this->getData('coverImageAltText', $locale);
+		return $this->getData('coverContraImageAltText', $locale);
 	}
 
 	/**
@@ -512,8 +512,8 @@ class Issue extends DataObject {
 	 * @return array
 	 */
 	function getCoverContraImageUrls() {
-		$coverImages = $this->getCoverContraImage(null);
-		if (empty($coverImages)) {
+		$coverContraImages = $this->getCoverContraImage(null);
+		if (empty($coverContraImages)) {
 			return array();
 		}
 
@@ -523,7 +523,7 @@ class Issue extends DataObject {
 
 		$urls = array();
 
-		foreach ($coverImages as $locale => $contraTapaName) {
+		foreach ($coverContraImages as $locale => $contraTapaName) {
 			$urls[$locale] = sprintf('%s/%s/%s', $request->getBaseUrl(), $publicFileManager->getJournalFilesPath($this->getJournalId()), $contraTapaName);
 		}
 
@@ -532,11 +532,11 @@ class Issue extends DataObject {
 
 	/**
 	 * Set issue covercontra image alternate text
-	 * @param $coverImageAltText string
+	 * @param $coverContraImageAltText string
 	 * @param $locale string
 	 */
-	function setCoverContraImageAltText($coverImageAltText, $locale) {
-		return $this->setData('coverImageAltText', $coverImageAltText, $locale);
+	function setCoverContraImageAltText($coverContraImageAltText, $locale) {
+		return $this->setData('coverContraImageAltText', $coverContraImageAltText, $locale);
 	}
 	
 	//--------------------------------------------------------------

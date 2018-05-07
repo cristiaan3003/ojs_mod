@@ -322,7 +322,7 @@ class IssueDAO extends DAO implements PKPPubIdPluginDAO {
 	 * @return array
 	 */
 	function getLocaleFieldNames() {
-		return array('title', 'description', 'coverImageAltText', 'coverImage');
+		return array('title', 'description', 'coverImageAltText', 'coverImage','coverContraImageAltText','contraTapaName');
 	}
 
 	/**
@@ -474,6 +474,15 @@ class IssueDAO extends DAO implements PKPPubIdPluginDAO {
 				}
 			}
 		}
+		
+		if (is_array($issue->getCoverContraImage(null))) {
+			foreach ($issue->getCoverContraImage(null) as $coverContraImage) {
+				if ($coverContraImage != '') {
+					$publicFileManager->removeJournalFile($issue->getJournalId(), $coverContraImage);
+				}
+			}
+		}
+		
 
 		$issueId = $issue->getId();
 
